@@ -1,0 +1,9 @@
+C:\Users\thiag\Desktop\FichaAcademia\FichaAcademia.Dominio\bin\Debug\netcoreapp2.1\FichaAcademia.Dominio.deps.json
+C:\Users\thiag\Desktop\FichaAcademia\FichaAcademia.Dominio\bin\Debug\netcoreapp2.1\FichaAcademia.Dominio.dll
+C:\Users\thiag\Desktop\FichaAcademia\FichaAcademia.Dominio\bin\Debug\netcoreapp2.1\FichaAcademia.Dominio.pdb
+C:\Users\thiag\Desktop\FichaAcademia\FichaAcademia.Dominio\obj\Debug\netcoreapp2.1\FichaAcademia.Dominio.csproj.CoreCompileInputs.cache
+C:\Users\thiag\Desktop\FichaAcademia\FichaAcademia.Dominio\obj\Debug\netcoreapp2.1\FichaAcademia.Dominio.AssemblyInfoInputs.cache
+C:\Users\thiag\Desktop\FichaAcademia\FichaAcademia.Dominio\obj\Debug\netcoreapp2.1\FichaAcademia.Dominio.AssemblyInfo.cs
+C:\Users\thiag\Desktop\FichaAcademia\FichaAcademia.Dominio\obj\Debug\netcoreapp2.1\FichaAcademia.Dominio.dll
+C:\Users\thiag\Desktop\FichaAcademia\FichaAcademia.Dominio\obj\Debug\netcoreapp2.1\FichaAcademia.Dominio.pdb
+C:\Users\thiag\Desktop\FichaAcademia\FichaAcademia.Dominio\obj\Debug\netcoreapp2.1\FichaAcademia.Dominio.csprojAssemblyReference.cache

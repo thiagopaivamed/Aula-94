@@ -1,0 +1,42 @@
+﻿@model FichaAcademia.ViewModels.AdministradorViewModel
+
+@{
+    ViewData["Title"] = "Faça seu login";
+}
+
+
+<div class="container">
+    <div class="row">
+        <div class="col s12">
+            <div class="collection with-header">
+                <h6 class="collection-header">Efetue seu login</h6>
+                <form asp-action="Login">
+                    <div class="collection-item">
+                        <div asp-validation-summary="ModelOnly" class="red-text darken-3"></div>
+                        <div class="row">
+                            <div class="input-field">
+                                <input asp-for="Email" class="validate" id="Email" />
+                                <label for="Email">Email</label>
+                                <span asp-validation-for="Email" class="red-text darken-3"></span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field">
+                                <input asp-for="Senha" class="validate" id="Senha" />
+                                <label for="Senha">Senha</label>
+                                <span asp-validation-for="Senha" class="red-text darken-3"></span>
+                            </div>
+                        </div>
+                        <div class="collection-item">
+                            <input type="submit" value="Login" class="btn-small teal darken-2" /> &nbsp;                            
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

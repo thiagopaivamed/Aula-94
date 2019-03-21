@@ -1,0 +1,67 @@
+﻿@using Microsoft.AspNetCore.Http
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - FichaAcademia</title>
+
+    <environment include="Development">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+        <link rel="stylesheet" href="~/css/site.css" />
+    </environment>
+    <environment exclude="Development">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+    </environment>
+</head>
+<body>
+    <nav>
+        <div class="nav-wrapper grey darken-3 body-content">
+            <a href="#" class="brand-logo">Fichas de academia</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+
+                @if (!User.Identity.IsAuthenticated)
+                {
+                    <li><a asp-controller="Administradores" asp-action="Login">Login</a></li>
+                }
+                else
+                {
+                    <li><a asp-controller="Objetivos" asp-action="Index">Objetivos</a></li>
+                    <li><a asp-controller="Exercicios" asp-action="Index">Exercicios</a></li>
+                    <li><a asp-controller="CategoriasExercicios" asp-action="Index">Categorias</a></li>
+                    <li><a asp-controller="Professores" asp-action="Index">Professores</a></li>
+                    <li><a asp-controller="Alunos" asp-action="Index">Alunos</a></li>
+                    <li>Bem vindo, @HttpContextAccessor.HttpContext.Session.GetString("Usuario")</li>
+                    <li><a asp-controller="Administradores" asp-action="Logout">Logout</a></li>
+                }
+            </ul>
+        </div>
+    </nav>   
+
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; 2018 - FichaAcademia</p>
+        </footer>
+    </div>
+
+    <environment include="Development">
+        <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.3.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.3.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+        <script src="~/js/site.min.js" asp-append-version="true"></script>
+    </environment>
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

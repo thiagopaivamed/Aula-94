@@ -1,0 +1,92 @@
+﻿@model FichaAcademia.Dominio.Models.Professor
+
+@{
+    ViewData["Title"] = "Novo professor";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col s12">
+            <div class="collection with-header">
+                <h6 class="collection-header">Novo Professor</h6>
+                <form asp-action="Create" enctype="multipart/form-data">
+                    <div class="collection-item">
+                        <div asp-validation-summary="ModelOnly" class="red-text darken-3"></div>
+                        <div class="row">
+                            <div class="input-field">
+                                <input asp-for="Nome" class="validate" id="Nome" />
+                                <label for="Nome">Nome</label>
+                                <span asp-validation-for="Nome" class="red-text darken-3"></span>
+                            </div>
+                        </div>
+
+                        <img id="Imagem" src="#" alt="Foto" />
+                        <div class="row">
+                            <div class="file-field input-field">
+                                <div class="btn-small">
+                                    <span>Selecione a foto</span>
+                                    <input asp-for="Foto" type="file" name="arquivo" onchange="CarregarImagem(this)" />
+                                    <span asp-validation-for="Nome" class="red-text darken-3"></span>
+                                </div>
+                                <div class="file-path-wrapper">
+                                    <input class="file-path validade" type="text" placeholder="Faça o upload da foto" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="input-field">
+                                <input asp-for="Telefone" class="validate" id="Telefone" />
+                                <label for="Telefone">Telefone</label>
+                                <span asp-validation-for="Telefone" class="red-text darken-3"></span>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="input-field">
+                                <input asp-for="Turno" class="validate" id="Turno" />
+                                <label for="Turno">Turno</label>
+                                <span asp-validation-for="Turno" class="red-text darken-3"></span>
+                            </div>
+                        </div>
+
+                        <div class="collection-item">
+                            <input type="submit" value="Salvar" class="btn-small teal darken-3" /> &nbsp;
+                            <a asp-action="Index" class="btn-small grey darken-1">Voltar</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $("#Imagem").hide();
+        })
+
+        function CarregarImagem(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                $("#Imagem").show();
+
+                reader.onload = function (e) {
+                    $("#Imagem").attr('src', e.target.result).width(250).height(250);
+                };
+            }
+
+            reader.readAsDataURL(input.files[0]);
+        }
+
+        $(function () {
+            $("#Telefone").mask("(99) 9 9999-9999");
+        });
+
+    </script>
+}

@@ -1,0 +1,42 @@
+﻿@model FichaAcademia.Dominio.Models.Exercicio
+
+@{
+    ViewData["Title"] = "Novo exercício";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col s12">
+            <div class="collection with-header">
+                <h6 class="collection-header">Novo exercício</h6>
+                <form asp-action="Create">
+                    <div class="collection-item">
+                        <div asp-validation-summary="ModelOnly" class="red-text darken-3"></div>
+                        <div class="row">
+                            <div class="input-field">
+                                <input asp-for="Nome" class="validate" id="Nome" />
+                                <label for="Nome">Nome</label>
+                                <span asp-validation-for="Nome" class="red-text darken-3"></span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field">
+                                <select asp-for="CategoriaExercicioId" class="browser-default" asp-items="ViewBag.CategoriaExercicioId"></select>
+                                <span asp-validation-for="CategoriaExercicioId" class="red-text darken-3"></span>
+                            </div>
+                        </div>
+
+                        <div class="collection-item">
+                            <input type="submit" value="Salvar" class="btn-small teal darken-3" /> &nbsp;
+                            <a asp-action="Index" class="btn-small grey darken-1">Voltar</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

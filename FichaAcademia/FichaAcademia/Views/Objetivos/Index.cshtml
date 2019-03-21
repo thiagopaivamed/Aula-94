@@ -1,0 +1,78 @@
+﻿@model IEnumerable<FichaAcademia.Dominio.Models.Objetivo>
+
+@{
+    ViewData["Title"] = "Objetivos cadastrados";
+}
+
+<h5>Objetivos cadastrados</h5>
+
+<p>
+    <a asp-action="Create" class="btn-small green darken-2">Novo Objetivo</a>
+</p>
+<table class="table striped highlight">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descricao)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Descricao)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.ObjetivoId" class="btn-small light-blue darken-2">Atualizar</a> &nbsp;
+                    <a onclick="ExibirModal(@item.ObjetivoId, '@item.Nome')" class="btn-small red darken-2">Excluir</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div id="modal1" class="modal">
+    <div class="modal-content">
+        <h4>Confirmar exclusão</h4>
+        <p>Deseja prosseguir com a exclusão de <b class="nome"></b> ?</p>
+    </div>
+    <div class="modal-footer">
+        <a class="modal-close btn green accent-4">Não</a>
+        <a class="modal-close btn red accent-4 btnConfirmar">Sim</a>
+    </div>
+</div>
+
+@section Scripts
+    {
+    <script>
+        $(document).ready(function () {
+            $(".modal").modal();
+        })
+
+        function ExibirModal(id, nome) {
+            $(".nome").html(nome);
+
+            $("#modal1").modal("open");
+
+            $(".btnConfirmar").on('click', function () {
+                $.ajax({
+                    method: "POST",
+                    url: "/Objetivos/Delete",
+                    data: { id: id },
+                    success: function () {
+                        location.reload();
+                    }
+                });
+            });
+        }
+    </script>
+}

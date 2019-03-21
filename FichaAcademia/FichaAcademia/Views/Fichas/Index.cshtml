@@ -1,0 +1,97 @@
+﻿@model IEnumerable<FichaAcademia.Dominio.Models.Ficha>
+
+@{
+    ViewData["Title"] = "Fichas cadastradas";
+}
+
+<h5>Fichas cadastradas</h5>
+
+<p>
+    <a asp-action="Create" asp-route-AlunoId="@ViewBag.AlunoId" class="btn-small green darken-2">Nova ficha</a>
+</p>
+<table class="table hover striped highlight centered">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cadastro)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Validade)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Aluno)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cadastro)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Validade)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Aluno.NomeCompleto)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-FichaId="@item.FichaId" class="btn-small light-blue darken-2">Atualizar</a> &nbsp;
+                    <a asp-action="Details" asp-route-FichaId="@item.FichaId" class="btn-small amber darken-3">Detalhes</a> &nbsp;
+                    <a asp-action="Listagem" asp-controller="Exercicios" asp-route-FichaId="@item.FichaId" asp-route-AlunoId="@item.AlunoId" class="btn-small blue-grey darken-1">Novo Exercicio</a>
+                    <a asp-action="VisualizarPDF" asp-route-FichaId="@item.FichaId" class="btn-small red accent-4">PDF</a>
+                    <a onclick="ExibirModal(@item.FichaId, '@item.Nome')" class="btn-small red darken-2">Excluir</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-controller="Alunos" asp-action="Index">Voltar</a>
+
+
+<div id="modal1" class="modal">
+    <div class="modal-content">
+        <h4>Confirmar exclusão</h4>
+        <p>Deseja prosseguir com a exclusão de <b class="nome"></b> ?</p>
+    </div>
+    <div class="modal-footer">
+        <a class="modal-close btn green accent-4">Não</a>
+        <a class="modal-close btn red accent-4 btnConfirmar">Sim</a>
+    </div>
+</div>
+
+@section Scripts
+    {
+    <script>
+        $(document).ready(function () {
+            $(".modal").modal();
+        })
+
+        function ExibirModal(FichaId, nome) {
+            $(".nome").html(nome);
+
+            $("#modal1").modal("open");
+
+            $(".btnConfirmar").on('click', function () {
+                $.ajax({
+                    method: "POST",
+                    url: "/Fichas/Delete",
+                    data: { FichaId: FichaId },
+                    success: function () {
+                        location.reload();
+                    }
+                });
+            });
+        }
+    </script>
+}
+

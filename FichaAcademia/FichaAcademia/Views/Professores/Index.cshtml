@@ -1,0 +1,92 @@
+﻿@model IEnumerable<FichaAcademia.Dominio.Models.Professor>
+
+@{
+    ViewData["Title"] = "Professores cadastrados";
+}
+
+<h5>Professores cadastrados</h5>
+
+<p>
+    <a asp-action="Create" class="btn-small green darken-2">Novo Professor</a>
+</p>
+<table class="table striped hover highlight">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Foto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Telefone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Turno)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <img src="@Url.Content(item.Foto)" class="circle" height="100" width="150" />
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nome)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Telefone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Turno)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.ProfessorId" class="btn-small light-blue darken-2">Atualizar</a> &nbsp;
+                    <a onclick="ExibirModal(@item.ProfessorId,'@item.Nome')" class="btn-small red darken-2">Excluir</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div id="modal1" class="modal">
+    <div class="modal-content">
+        <h4>Confirmar exclusão</h4>
+        <p>Deseja prosseguir com a exclusão de <b class="nome"></b> ?</p>
+    </div>
+    <div class="modal-footer">
+        <a class="modal-close btn green accent-4">Não</a>
+        <a class="modal-close btn red accent-4 btnConfirmar">Sim</a>
+    </div>
+</div>
+
+@section Scripts
+    {
+    <script>
+        $(document).ready(function () {
+            $(".modal").modal();
+        })
+
+        function ExibirModal(id, nome) {
+            $(".nome").html(nome);
+
+            $("#modal1").modal("open");
+
+            $(".btnConfirmar").on('click', function () {
+                $.ajax({
+                    method: "POST",
+                    url: "/Professores/Delete",
+                    data: { id: id },
+                    success: function () {
+                        location.reload();
+                    }
+                });
+            });
+        }
+    </script>
+}

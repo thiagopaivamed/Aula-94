@@ -1,0 +1,83 @@
+﻿@model FichaAcademia.Dominio.Models.Aluno
+
+@{
+    ViewData["Title"] = "Atualizar " + Model.NomeCompleto;
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col s12">
+            <div class="collection with-header">
+                <h6 class="collection-header">Atualizar @Model.NomeCompleto</h6>
+                <form asp-action="Edit">
+                    <div class="collection-item">
+                        <div asp-validation-summary="ModelOnly" class="red-text darken-3"></div>
+                        <input type="hidden" asp-for="AlunoId" />
+                        <div class="row">
+                            <div class="input-field">
+                                <input asp-for="NomeCompleto" class="validate" id="NomeCompleto" />
+                                <label for="NomeCompleto">Nome Completo</label>
+                                <span asp-validation-for="NomeCompleto" class="red-text darken-3"></span>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="input-field">
+                                <input asp-for="Idade" class="validate" id="Idade" />
+                                <label for="Idade">Idade</label>
+                                <span asp-validation-for="Idade" class="red-text darken-3"></span>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="input-field">
+                                <input asp-for="Peso" class="validate" id="Peso" />
+                                <label for="Peso">Peso</label>
+                                <span asp-validation-for="Peso" class="red-text darken-3"></span>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="input-field">
+                                <select asp-for="ObjetivoId" class="input-field validate" id="Objetivo" asp-items="ViewBag.ObjetivoId"></select>
+                                <label for="Objetivo">Objetivo</label>
+                                <span asp-validation-for="ObjetivoId" class="red-text darken-3"></span>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="input-field">
+                                <select asp-for="ProfessorId" class="input-field validate" id="Professor" asp-items="ViewBag.ProfessorId"></select>
+                                <label for="Professor">Professor</label>
+                                <span asp-validation-for="ProfessorId" class="red-text darken-3"></span>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="input-field">
+                                <input asp-for="FrequenciaSemanal" class="validate" id="FrequenciaSemanal" />
+                                <label for="FrequenciaSemanal">Frequencia Semanal</label>
+                                <span asp-validation-for="FrequenciaSemanal" class="red-text darken-3"></span>
+                            </div>
+                        </div>
+
+                        <div class="collection-item">
+                            <input type="submit" value="Atualizar" class="btn-small blue darken-3" /> &nbsp;
+                            <a asp-action="Index" class="btn-small grey darken-1">Voltar</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script>
+        $(document).ready(function () {
+            $('select').formSelect();
+        })
+    </script>
+}

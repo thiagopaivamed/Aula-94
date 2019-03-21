@@ -1,0 +1,12 @@
+C:\Users\thiag\Desktop\FichaAcademia\FichaAcademia.AcessoDados\bin\Debug\netcoreapp2.1\FichaAcademia.AcessoDados.deps.json
+C:\Users\thiag\Desktop\FichaAcademia\FichaAcademia.AcessoDados\bin\Debug\netcoreapp2.1\FichaAcademia.AcessoDados.dll
+C:\Users\thiag\Desktop\FichaAcademia\FichaAcademia.AcessoDados\bin\Debug\netcoreapp2.1\FichaAcademia.AcessoDados.pdb
+C:\Users\thiag\Desktop\FichaAcademia\FichaAcademia.AcessoDados\bin\Debug\netcoreapp2.1\FichaAcademia.Dominio.dll
+C:\Users\thiag\Desktop\FichaAcademia\FichaAcademia.AcessoDados\bin\Debug\netcoreapp2.1\FichaAcademia.Dominio.pdb
+C:\Users\thiag\Desktop\FichaAcademia\FichaAcademia.AcessoDados\obj\Debug\netcoreapp2.1\FichaAcademia.AcessoDados.csprojAssemblyReference.cache
+C:\Users\thiag\Desktop\FichaAcademia\FichaAcademia.AcessoDados\obj\Debug\netcoreapp2.1\FichaAcademia.AcessoDados.csproj.CoreCompileInputs.cache
+C:\Users\thiag\Desktop\FichaAcademia\FichaAcademia.AcessoDados\obj\Debug\netcoreapp2.1\FichaAcademia.AcessoDados.AssemblyInfoInputs.cache
+C:\Users\thiag\Desktop\FichaAcademia\FichaAcademia.AcessoDados\obj\Debug\netcoreapp2.1\FichaAcademia.AcessoDados.AssemblyInfo.cs
+C:\Users\thiag\Desktop\FichaAcademia\FichaAcademia.AcessoDados\obj\Debug\netcoreapp2.1\FichaAcademia.AcessoDados.csproj.CopyComplete
+C:\Users\thiag\Desktop\FichaAcademia\FichaAcademia.AcessoDados\obj\Debug\netcoreapp2.1\FichaAcademia.AcessoDados.dll
+C:\Users\thiag\Desktop\FichaAcademia\FichaAcademia.AcessoDados\obj\Debug\netcoreapp2.1\FichaAcademia.AcessoDados.pdb
